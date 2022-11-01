@@ -48,7 +48,7 @@
 			//log user in
 			const customer = await usePayloadLogin({ email: values.email, password: values.password });
 			//navigate to dashboard
-			await navigateTo("/admin/dashboard");
+			await navigateTo("/admin/dashboard", { replace: true });
 			//Show feedback
 			useToast().success("Welcome back!");
 		} catch (error) {

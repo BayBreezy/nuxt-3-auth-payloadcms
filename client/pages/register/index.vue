@@ -55,7 +55,7 @@
 				name: values.name,
 			});
 			//navigate to dashboard
-			await navigateTo("/admin/dashboard");
+			await navigateTo("/admin/dashboard", { replace: true });
 			//Show feedback
 			useToast().success("Account created!");
 		} catch (error) {

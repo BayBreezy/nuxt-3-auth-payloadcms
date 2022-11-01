@@ -11,7 +11,7 @@
 			<div class="max-w-6xl mx-auto pt-20">
 				<h1 class="text-2xl font-semibold mb-5">
 					<!-- Not sure if doing this is safe??? -->
-					Hey <span>{{ customer?.user.name }}</span>
+					Hey <span>{{ customer?.user?.name }}</span>
 				</h1>
 				<button @click="logout" class="btn">Logout</button>
 			</div>
@@ -21,15 +21,14 @@
 
 <script setup>
 	const customer = useCustomer();
+	const router = useRouter();
 	const logout = async () => {
 		try {
 			await usePayloadLogout();
 			// remove the user
 			customer.value = null;
-			//navigate to the login page
-			await navigateTo("/");
-			//Show feedback
-			useToast().success("See you soon!");
+			// reload page
+			router.go(0);
 		} catch (error) {
 			console.log(error);
 		}
